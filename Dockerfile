@@ -1,18 +1,25 @@
-FROM ruby:2.7.3
+FROM python:latest
 
 WORKDIR /app
 
-#instalando bundle
-RUN gem install bundler
+# Instalando as dependências do sistema
+RUN apt-get update && apt-get install -y \
+    curl \
+    build-essential \
+    nodejs \
+    npm
 
-#instalando node
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - 
-RUN apt-get update && apt-get install -y nodejs apt-utils
+# Atualizando o Node.js e instalando o Yarn
+# RUN npm install -g n && n stable
+# RUN npm install -g yarn
 
-#atualizando node
-RUN npm update -g
+# Definindo o diretório de trabalho
+WORKDIR /app
 
-#instalando yarn
-RUN npm install yarn --global
+# Copiando os arquivos do projeto
+COPY . /app
 
-CMD exec docker-compose/start.sh
+# Instalando as dependências do projeto
+RUN pip install --no-cache-dir -r requirements.txt
+
+# CMD exec docker-compose/start.sh
