@@ -7,14 +7,9 @@ services:
     tty: true
     stdin_open: true
     volumes:
-      - .:/app
-      - bundle_cache:/usr/local/bundle
-      - ./docker-compose/database.yml:/app/config/database.yml # Here we go!
-      - ./docker-compose/.gitignore:/app/.gitignore # Here we go!
-      - ./docker-compose/.ruby-version:/app/.ruby-version # Here we go!
-      - ./docker-compose/Gemfile:/app/Gemfile # Here we go!
+      - ./crud:/app
     ports:
-      - "3000:3000"
+      - "8000:8000"
     depends_on:
       - postgres
     environment:
