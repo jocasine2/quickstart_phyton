@@ -6,7 +6,7 @@ source docker-compose/functions.sh
 user_docker
 
 #iniciando banco de dados
-sudo docker-compose up -d
+sudo docker-compose up -d --build
 
 #atualizando permissões
 permissions_update

@@ -3,11 +3,11 @@ services:
   app:
     container_name: ${APP_NAME}_app
     restart: on-failure
-    build: ./docker-compose
+    build: .
     tty: true
     stdin_open: true
     volumes:
-      - ./crud:/app
+      - ./app:/app
     ports:
       - "8000:8000"
     depends_on:

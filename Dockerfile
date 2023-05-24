@@ -1,5 +1,5 @@
 FROM python:latest
-
+EXPOSE 8000
 WORKDIR /app
 
 # Instalando as dependências do sistema
@@ -17,9 +17,12 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Copiando os arquivos do projeto
-COPY . /app
+COPY requirements.txt /app
+COPY ./app /app
 
 # Instalando as dependências do projeto
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip
 
-# CMD exec docker-compose/start.sh
+ENTRYPOINT ["python3"]
+CMD ["manage.py", "runserver", "0.0.0.0:8000"]

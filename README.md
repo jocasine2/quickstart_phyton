@@ -2,7 +2,10 @@
 
 # comandos úteis python + django
 ```
-django-admin startapp crud
+app django-admin startproject app
+```
+```
+app django-admin startapp crud
 ```
 ```
 manage.py runserver
