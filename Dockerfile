@@ -1,4 +1,5 @@
-FROM python:latest
+FROM python:3.11
+
 EXPOSE 8000
 WORKDIR /app
 
@@ -9,15 +10,8 @@ RUN apt-get update && apt-get install -y \
     nodejs \
     npm
 
-# Atualizando o Node.js e instalando o Yarn
-# RUN npm install -g n && n stable
-# RUN npm install -g yarn
-
-# Definindo o diretório de trabalho
-WORKDIR /app
-
 # Copiando os arquivos do projeto
-COPY requirements.txt /app
+COPY requirements.txt /app/
 COPY ./app /app
 
 # Instalando as dependências do projeto

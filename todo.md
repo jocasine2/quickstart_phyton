@@ -1,0 +1,1 @@
+[] - Ajustar functions.sh separando as funções gerais das funções do ruby on rails
